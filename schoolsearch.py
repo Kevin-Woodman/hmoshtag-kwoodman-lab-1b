@@ -18,7 +18,12 @@ def main():
 
 
     print(infoString)
-
+    while(True):
+        selection = input().split(" ")
+        match selection[0]:
+            case "Q" | "Quit":  exit(0)
+            case "S" | "Student" : pass
+            case _: print(selection, "Invalid input")
 
 if __name__ == "__main__":
     main()
