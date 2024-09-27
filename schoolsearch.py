@@ -12,10 +12,14 @@ infoString = """ Usage:
 
 def main():
     studentArray = []
+
+    if(not os.path.isfile("./students.txt")): 
+        print("students.txt not found")
+        exit(0)
+
     with open("./students.txt") as studentFile:
         lines = studentFile.readlines()
         studentArray = [list(map(lambda string : string.replace("\n",""),line.split(","))) for line in lines]
-
 
     print(infoString)
     while(True):
