@@ -10,6 +10,16 @@ infoString = """ Usage:
     I[nfo]
     Q[uit]"""
 
+
+def searchByTeacher(selection, studentArray):
+    if(len(selection) != 2): 
+        print("Invalid usage")
+        return
+
+    for student in studentArray: 
+        if(student[6] == selection[1]): print(student[0],student[1])
+    
+
 def main():
     studentArray = []
 
@@ -21,14 +31,17 @@ def main():
         lines = studentFile.readlines()
         studentArray = [list(map(lambda string : string.replace("\n",""),line.split(","))) for line in lines]
 
+
     print(infoString)
     while(True):
         selection = input().split(" ")
+        print("-----")
         match selection[0]:
             case "Q" | "Quit":  exit(0)
             case "S" | "Student" : pass
+            case "T" | "Teacher" : searchByTeacher(selection,studentArray)
             case _: print(selection, "Invalid input")
-
+        print("")
 if __name__ == "__main__":
     main()
 
