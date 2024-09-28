@@ -1,0 +1,81 @@
+// CSC 365
+// Lab 1-a test suite
+
+// TC-1
+// Tests Requirements R3, R4
+// short form command name, existing student
+// expected output: VANCOTT MIKE 2 108 HAMER GAVIN 
+S: VANCOTT
+
+// TC-2
+// Tests Requirements R3, R4
+// short form command name, non-existing student
+// expected output: <empty line>
+S: WOODMAN
+
+// TC-3
+// Tests Requirements R3, R4
+// long form command name, existing student
+// expected output: BOYTER WAN 6 102 KERBS BENITO 
+Student: BOYTER
+
+// TC-4
+// Tests Requirements R3, R6
+// short form command name, existing teacher
+// expected output: RACANELLO NOEL \nCORONADO DIMPLE \nBOYTER WAN \n KEMERER ROSETTA \n DEMARTINI DEWAYNE 
+T: KERBS   
+
+// TC-5
+// Tests Requirements R3, R6
+// short form command name, non-existing teacher
+// expected output: <empty line>
+T: NIETZSCHE       
+
+// TC-6
+// Tests Requirements R3, R6
+// long form command name, existing teacher
+// expected output:ZAPPAVIGNA ELLIOTT \nFRIEDSTROM REED 
+Teacher: BODZIONY
+
+// TC-7
+// Tests Requirements R3, R8
+// short form command name, existing bus
+// expected output: RACANELLO NOEL \nVILARDO EMMANUEL \nKRAKE VALENTIN \nBEAN INGER \nBUSSMANN BILLY \nFEYEREISEN WILFREDO 
+B: 56
+
+// TC-8
+// Tests Requirements R3, R8
+// short form command name, non-existing bus
+// expected output: <empty line>
+B: 57
+
+// TC-9
+// Tests Requirements R3, R8
+// long form command name, existing bus
+// expected output:SCHOENECKER PHUONG \nFINCHMAN MATHILDA \nBRODERSEN HYE \nHAVIR BOBBIE \nMASSART ELDON \nGARTH JOHN \nCREMEANS RANDOLPH \nKREESE CARRIE 
+Bus: 0
+
+// TC-10
+// Tests Requirements R3, R10
+// short form command name, average existing grade
+// expected output: 1 3.00
+A: 1
+
+// TC-11
+// Tests Requirements R3, R10
+// short form command name, average non-existing grade
+// expected output: <empty line>
+A: 0
+
+// TC-12
+// Tests Requirements R3, R10
+// long form command name, average existing grade
+// expected output: 2 2.95
+Average: 2
+
+
+// TC-Final
+// Tests Requirments R3, R13
+// quit command
+// expected output: program terminates
+Q

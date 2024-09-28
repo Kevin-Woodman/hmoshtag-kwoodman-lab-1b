@@ -75,7 +75,6 @@ def main():
     print(infoString)
     while(True):
         selection = input().split(" ")
-        print("-----")
         match selection[0]:
             case "Q" | "Quit":  exit(0)
             case "S:" | "Student:" : searchByStudent(selection, studentArray)
