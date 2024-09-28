@@ -11,14 +11,22 @@ infoString = """ Usage:
     Q[uit]"""
 
 
-def searchByTeacher(selection, studentArray):
-    if(len(selection) != 2): 
+def _searchAndPrint(selection, studentArray, selectionLen, comparisonIndex, outputIndices):
+    if(len(selection) != selectionLen): 
         print("Invalid usage")
         return
 
     for student in studentArray: 
-        if(student[6] == selection[1]): print(student[0],student[1])
-    
+        if(student[comparisonIndex] == selection[1]): 
+            for index in outputIndices:
+                print(student[index], end=" ")
+            print()    
+
+def searchByTeacher(selection, studentArray):
+    _searchAndPrint(selection,studentArray, 2, 6, [0,1])
+
+def searchByBus(selection, studentArray):
+     _searchAndPrint(selection,studentArray, 2, 4, [0,1])
 
 def main():
     studentArray = []
@@ -40,6 +48,7 @@ def main():
             case "Q" | "Quit":  exit(0)
             case "S" | "Student" : pass
             case "T" | "Teacher" : searchByTeacher(selection,studentArray)
+            case "B" | "Bus" : searchByBus(selection,studentArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
