@@ -10,23 +10,55 @@ infoString = """ Usage:
     I[nfo]
     Q[uit]"""
 
+LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA, TLASTNAME, TFIRSTNAME = [i for i in range(0,8)]
 
-def _searchAndPrint(selection, studentArray, selectionLen, comparisonIndex, outputIndices):
-    if(len(selection) != selectionLen): 
-        print("Invalid usage")
-        return
 
+def _searchAndPrint(filter, studentArray, comparisonIndex, outputIndices):
     for student in studentArray: 
-        if(student[comparisonIndex] == selection[1]): 
+        if(student[comparisonIndex] == filter): 
             for index in outputIndices:
                 print(student[index], end=" ")
             print()    
 
 def searchByTeacher(selection, studentArray):
-    _searchAndPrint(selection,studentArray, 2, 6, [0,1])
+    if(len(selection) != 2): 
+        print("Invalid usage: ", selection)
+        return
+
+    _searchAndPrint(selection[1],studentArray, TLASTNAME, [LASTNAME,FIRSTNAME])
 
 def searchByBus(selection, studentArray):
-     _searchAndPrint(selection,studentArray, 2, 4, [0,1])
+    if(len(selection) != 2): 
+        print("Invalid usage: ", selection)
+        return
+
+    _searchAndPrint(selection[1],studentArray, BUS, [LASTNAME,FIRSTNAME])
+
+def searchByStudent(selection, studentArray):
+    if(len(selection) == 2):
+        _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME,FIRSTNAME, GRADE,
+                                                                CLASSROOM, TLASTNAME, TFIRSTNAME])
+    else:
+        pass #Check if Bus was given as a parameter
+
+def average(selection, studentArray):
+    if(len(selection) != 2): 
+        print("Invalid usage: ", selection)
+        return
+
+    total, count = [0,0]
+    for student in studentArray:
+        if(student[GRADE] == selection[1]): 
+            try:
+                total += float(student[GPA])
+            except ValueError: 
+                 print(student[LASTNAME], student[GPA], "NAN, students.txt improperly formatted")
+                 return
+            count += 1
+
+    if count == 0: return
+    print(f"{selection[1]} %.2f"%(total/count))
+
 
 def main():
     studentArray = []
@@ -46,9 +78,10 @@ def main():
         print("-----")
         match selection[0]:
             case "Q" | "Quit":  exit(0)
-            case "S" | "Student" : pass
-            case "T" | "Teacher" : searchByTeacher(selection,studentArray)
-            case "B" | "Bus" : searchByBus(selection,studentArray)
+            case "S:" | "Student:" : searchByStudent(selection, studentArray)
+            case "T:" | "Teacher:" : searchByTeacher(selection, studentArray)
+            case "B:" | "Bus:" : searchByBus(selection, studentArray)
+            case "A:" | "Average:" : average(selection,studentArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
