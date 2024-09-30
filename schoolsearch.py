@@ -38,8 +38,10 @@ def searchByStudent(selection, studentArray):
     if(len(selection) == 2):
         _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME,FIRSTNAME, GRADE,
                                                                 CLASSROOM, TLASTNAME, TFIRSTNAME])
-    else:
-        pass #Check if Bus was given as a parameter
+    elif (len(selection) == 3 and (selection[2] == "B" or selection[2] == "Bus")):
+        _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME, FIRSTNAME, BUS])
+    else: 
+        print("Invalid usage: ", selection)
 
 def average(selection, studentArray):
     if(len(selection) != 2): 
