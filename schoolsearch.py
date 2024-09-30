@@ -61,6 +61,9 @@ def average(selection, studentArray):
     if count == 0: return
     print(f"{selection[1]} %.2f"%(total/count))
 
+def searchByGrade(selection, studentArray):
+    if(len(selection) == 2):
+        _searchAndPrint(selection[1], studentArray, GRADE, [LASTNAME, FIRSTNAME])
 
 def main():
     studentArray = []
@@ -83,6 +86,7 @@ def main():
             case "T:" | "Teacher:" : searchByTeacher(selection, studentArray)
             case "B:" | "Bus:" : searchByBus(selection, studentArray)
             case "A:" | "Average:" : average(selection,studentArray)
+            case "G:"  | "Grade:" : searchByGrade(selection,studentArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
