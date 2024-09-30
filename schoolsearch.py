@@ -21,21 +21,21 @@ def _searchAndPrint(filter, studentArray, comparisonIndex, outputIndices):
             print()    
 
 def searchByTeacher(selection, studentArray):
-    if(len(selection) != 2): 
+    if(len(selection) == 1): 
         print("Invalid usage: ", selection)
         return
 
     _searchAndPrint(selection[1],studentArray, TLASTNAME, [LASTNAME,FIRSTNAME])
 
 def searchByBus(selection, studentArray):
-    if(len(selection) != 2): 
+    if(len(selection) == 1): 
         print("Invalid usage: ", selection)
         return
 
     _searchAndPrint(selection[1],studentArray, BUS, [LASTNAME,FIRSTNAME])
 
 def searchByStudent(selection, studentArray):
-    if(len(selection) == 2):
+    if(len(selection) == 2 or (len(selection) >= 2 and selection[2] != "B" and selection[2] != "Bus")):
         _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME,FIRSTNAME, GRADE,
                                                                 CLASSROOM, TLASTNAME, TFIRSTNAME])
     elif (len(selection) == 3 and (selection[2] == "B" or selection[2] == "Bus")):
@@ -44,7 +44,7 @@ def searchByStudent(selection, studentArray):
         print("Invalid usage: ", selection)
 
 def average(selection, studentArray):
-    if(len(selection) != 2): 
+    if(len(selection) == 1): 
         print("Invalid usage: ", selection)
         return
 
