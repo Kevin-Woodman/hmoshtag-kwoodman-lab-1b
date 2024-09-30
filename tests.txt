@@ -91,6 +91,54 @@ S: ZAPPAVIGNA Bus
 // Expected output: <empty line>
 S: DRAKE B
 
+// TC-16
+// Tests Requirements R3, R7
+// Command to search for students in grade 6
+// Expected output:
+// SCHOENECKER PHUONG 
+// RACANELLO NOEL 
+// STERBACK PETER 
+// FINCHMAN MATHILDA 
+// ZAPPAVIGNA ELLIOTT 
+// OBREIN STAN 
+// CORONADO DIMPLE 
+// SAENPHIMMACHA NUMBERS 
+// BOYTER WAN 
+// BREVO JANNETTE 
+// CLECKLER FLOY 
+// KRAKE VALENTIN 
+// KEMERER ROSETTA 
+// BEAN INGER 
+// DEMARTINI DEWAYNE 
+// CREMEANS RANDOLPH 
+// FEYEREISEN WILFREDO 
+// WERST LEON 
+// LAMKIN TAMA 
+// KREESE CARRIE 
+// FRIEDSTROM REED 
+G: 6
+
+// TC-17
+// Tests Requirements R3, R7
+// Command to search for students in grade 3
+// Expected output:
+// COOKUS,XUAN
+// ELHADDAD,SHANTE
+// BRODERSEN,HYE
+// SWEDLUND,SHARRI
+// CIGANEK,MANIE
+// COVINGTON,TOMAS
+// EARLY,TORY
+// LINHART,LELA
+// THEUNISSEN,GRACE
+Grade: 3
+
+// TC-18
+// Tests Requirements R3, R7
+// Command to search for students in grade 7 (no students in this grade)
+// Expected output: <empty line>
+G: 7
+
 // TC-Final
 // Tests Requirments R3, R13
 // quit command

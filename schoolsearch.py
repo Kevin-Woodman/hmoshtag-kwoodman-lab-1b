@@ -64,6 +64,8 @@ def average(selection, studentArray):
 def searchByGrade(selection, studentArray):
     if(len(selection) == 2):
         _searchAndPrint(selection[1], studentArray, GRADE, [LASTNAME, FIRSTNAME])
+    else:
+        print("Invalid usage: ", selection)
 
 def main():
     studentArray = []
