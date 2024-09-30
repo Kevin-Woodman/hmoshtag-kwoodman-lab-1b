@@ -73,6 +73,23 @@ A: 0
 // expected output: 2 2.95
 Average: 2
 
+// TC-13
+// Tests Requirements R3, R5
+// Command to search for a student with last name HAVIR and bus information
+// Expected output: HAVIR BOBBIE 0
+S: HAVIR B
+
+// TC-14
+// Tests Requirements R3, R5
+// Command to search for a student with last name ZAPPAVIGNA and bus information
+// Expected output: ZAPPAVIGNA ELLIOTT 55
+S: ZAPPAVIGNA Bus
+
+// TC-15
+// Tests Requirements R3, R5
+// Command attempt to get bus information from a student who does not exist
+// Expected output: <empty line>
+S: DRAKE B
 
 // TC-Final
 // Tests Requirments R3, R13
