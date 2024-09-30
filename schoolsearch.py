@@ -35,10 +35,10 @@ def searchByBus(selection, studentArray):
     _searchAndPrint(selection[1],studentArray, BUS, [LASTNAME,FIRSTNAME])
 
 def searchByStudent(selection, studentArray):
-    if(len(selection) == 2 or (len(selection) >= 2 and selection[2] != "B" and selection[2] != "Bus")):
+    if(len(selection) == 2 or (len(selection) >= 3 and selection[2] != "B" and selection[2] != "Bus")):
         _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME,FIRSTNAME, GRADE,
                                                                 CLASSROOM, TLASTNAME, TFIRSTNAME])
-    elif (len(selection) == 3 and (selection[2] == "B" or selection[2] == "Bus")):
+    elif (len(selection) >= 3 and (selection[2] == "B" or selection[2] == "Bus")):
         _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME, FIRSTNAME, BUS])
     else: 
         print("Invalid usage: ", selection)
