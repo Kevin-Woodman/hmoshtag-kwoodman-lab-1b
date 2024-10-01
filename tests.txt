@@ -22,7 +22,12 @@ Student: BOYTER
 // TC-4
 // Tests Requirements R3, R6
 // short form command name, existing teacher
-// expected output: RACANELLO NOEL \nCORONADO DIMPLE \nBOYTER WAN \n KEMERER ROSETTA \n DEMARTINI DEWAYNE 
+// expected output: 
+// RACANELLO NOEL 
+// CORONADO DIMPLE 
+// BOYTER WAN 
+// KEMERER ROSETTA 
+// DEMARTINI DEWAYNE 
 T: KERBS   
 
 // TC-5
@@ -34,13 +39,21 @@ T: NIETZSCHE
 // TC-6
 // Tests Requirements R3, R6
 // long form command name, existing teacher
-// expected output:ZAPPAVIGNA ELLIOTT \nFRIEDSTROM REED 
+// expected output:
+// ZAPPAVIGNA ELLIOTT 
+// FRIEDSTROM REED 
 Teacher: BODZIONY
 
 // TC-7
 // Tests Requirements R3, R8
 // short form command name, existing bus
-// expected output: RACANELLO NOEL \nVILARDO EMMANUEL \nKRAKE VALENTIN \nBEAN INGER \nBUSSMANN BILLY \nFEYEREISEN WILFREDO 
+// expected output: 
+// RACANELLO NOEL 
+// VILARDO EMMANUEL 
+// KRAKE VALENTIN 
+// BEAN INGER 
+// BUSSMANN BILLY 
+// FEYEREISEN WILFREDO 
 B: 56
 
 // TC-8
@@ -52,7 +65,15 @@ B: 57
 // TC-9
 // Tests Requirements R3, R8
 // long form command name, existing bus
-// expected output:SCHOENECKER PHUONG \nFINCHMAN MATHILDA \nBRODERSEN HYE \nHAVIR BOBBIE \nMASSART ELDON \nGARTH JOHN \nCREMEANS RANDOLPH \nKREESE CARRIE 
+// expected output:
+// SCHOENECKER PHUONG
+// FINCHMAN MATHILDA 
+// BRODERSEN HYE 
+// HAVIR BOBBIE 
+// MASSART ELDON 
+// GARTH JOHN 
+// CREMEANS RANDOLPH 
+// KREESE CARRIE 
 Bus: 0
 
 // TC-10

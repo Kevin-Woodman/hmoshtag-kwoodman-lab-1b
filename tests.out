@@ -1,0 +1,106 @@
+ Usage: 
+    S[tudent]: <lastname> [B[us]] 
+    T[eacher]: <lastname> 
+    B[us]: <number> 
+    G[rade]: <number> [H[igh]|L[ow]]
+    A[verage]: <number>
+    I[nfo]
+    Q[uit]
+
+Enter your command~ VANCOTT MIKE 2 108 HAMER GAVIN 
+
+Enter your command~ 
+Enter your command~ BOYTER WAN 6 102 KERBS BENITO 
+
+Enter your command~ RACANELLO NOEL 
+CORONADO DIMPLE 
+BOYTER WAN 
+KEMERER ROSETTA 
+DEMARTINI DEWAYNE 
+
+Enter your command~ 
+Enter your command~ ZAPPAVIGNA ELLIOTT 
+FRIEDSTROM REED 
+
+Enter your command~ RACANELLO NOEL 
+VILARDO EMMANUEL 
+KRAKE VALENTIN 
+BEAN INGER 
+BUSSMANN BILLY 
+FEYEREISEN WILFREDO 
+
+Enter your command~ 
+Enter your command~ SCHOENECKER PHUONG 
+FINCHMAN MATHILDA 
+BRODERSEN HYE 
+HAVIR BOBBIE 
+MASSART ELDON 
+GARTH JOHN 
+CREMEANS RANDOLPH 
+KREESE CARRIE 
+
+Enter your command~ 1 3.00
+
+Enter your command~ 
+Enter your command~ 2 2.95
+
+Enter your command~ HAVIR BOBBIE 0 
+
+Enter your command~ ZAPPAVIGNA ELLIOTT 55 
+
+Enter your command~ 
+Enter your command~ SCHOENECKER PHUONG 
+RACANELLO NOEL 
+STERBACK PETER 
+FINCHMAN MATHILDA 
+ZAPPAVIGNA ELLIOTT 
+OBREIN STAN 
+CORONADO DIMPLE 
+SAENPHIMMACHA NUMBERS 
+BOYTER WAN 
+BREVO JANNETTE 
+CLECKLER FLOY 
+KRAKE VALENTIN 
+KEMERER ROSETTA 
+BEAN INGER 
+DEMARTINI DEWAYNE 
+CREMEANS RANDOLPH 
+FEYEREISEN WILFREDO 
+WERST LEON 
+LAMKIN TAMA 
+KREESE CARRIE 
+FRIEDSTROM REED 
+
+Enter your command~ COOKUS XUAN 
+ELHADDAD SHANTE 
+BRODERSEN HYE 
+SWEDLUND SHARRI 
+CIGANEK MANIE 
+COVINGTON TOMAS 
+EARLY TORY 
+LINHART LELA 
+THEUNISSEN GRACE 
+
+Enter your command~ 
+Enter your command~ GARTH JOHN 3.14 FALKER ADOLPH 0
+
+Enter your command~ SAELEE DANILO 2.85 FALKER ADOLPH 54
+
+Enter your command~ SAELEE DANILO 2.85 FALKER ADOLPH 54
+
+Enter your command~ GARTH JOHN 3.14 FALKER ADOLPH 0
+
+Enter your command~ 
+Enter your command~ 1: 2
+2: 13
+3: 9
+4: 15
+6: 21
+
+Enter your command~ 1: 2
+2: 13
+3: 9
+4: 15
+6: 21
+
+Enter your command~ 
