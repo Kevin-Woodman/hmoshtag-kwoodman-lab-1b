@@ -62,8 +62,37 @@ def average(selection, studentArray):
     print(f"{selection[1]} %.2f"%(total/count))
 
 def searchByGrade(selection, studentArray):
-    if(len(selection) == 2):
+    if len(selection) == 2:  # Normal search by grade
         _searchAndPrint(selection[1], studentArray, GRADE, [LASTNAME, FIRSTNAME])
+    
+    elif len(selection) == 3:  # Search for highest or lowest GPA in a given grade
+        grade = selection[1]
+        grade_students = [student for student in studentArray if student[GRADE] == grade] # Gets all the students within a given grade
+
+        if not grade_students:
+            return
+
+        if selection[2] == 'H' or selection[2] == "High": 
+            max_gpa = max(float(student[GPA]) for student in grade_students)
+            
+            # Get all students with the maximum GPA
+            highest_gpa_students = [student for student in grade_students if float(student[GPA]) == max_gpa]
+
+            # Print all students with the highest GPA (addresses ties)
+            for student in highest_gpa_students:
+                print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]} {student[TLASTNAME]} {student[TFIRSTNAME]} {student[BUS]}")
+        
+        elif selection[2] == 'L' or selection[2] == "Low": 
+            min_gpa = min(float(student[GPA]) for student in grade_students)
+            
+            # Get all students with the minimum GPA
+            lowest_gpa_students = [student for student in grade_students if float(student[GPA]) == min_gpa]
+            
+            # Print all students with the lowest GPA (addresses ties)
+            for student in lowest_gpa_students:
+                print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]} {student[TLASTNAME]} {student[TFIRSTNAME]} {student[BUS]}")
+        else:
+            print("Invalid usage: must specify 'H'/'High' for highest or 'L'/'Low' for lowest.")
     else:
         print("Invalid usage: ", selection)
 

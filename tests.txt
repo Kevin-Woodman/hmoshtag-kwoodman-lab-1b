@@ -139,6 +139,37 @@ Grade: 3
 // Expected output: <empty line>
 G: 7
 
+// TC-19 
+// Tests Requirements R3, R9
+// Search for highest gpa in grade 1
+// Expected output: GARTH JOHN 3.14 FALKER ADOLPH 0
+G: 1 H
+
+// TC-20
+// Tests Requirements R3, R9
+// Search for lowest gpa in grade 1
+// Expected output: SAELEE DANILO 2.85 FALKER ADOLPH 54
+G: 1 L
+
+// TC-21
+// Tests Requirements R3, R9
+// Search for lowest gpa in grade 1, long form
+// Expected output: SAELEE DANILO 2.85 FALKER ADOLPH 54
+G: 1 Low
+
+// TC-22
+// Tests Requirements R3, R9
+// Search for highest gpa in grade 1, long form
+// Expected output: GARTH JOHN 3.14 FALKER ADOLPH 0
+G: 1 High
+
+// TC-23
+// Tests Requirements R3, R9
+// Search for highest gpa in a grade that does not exist
+// Expected output: <empty line>
+G: 7 High
+
+
 // TC-Final
 // Tests Requirments R3, R13
 // quit command
