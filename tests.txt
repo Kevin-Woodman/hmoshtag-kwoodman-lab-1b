@@ -169,6 +169,27 @@ G: 1 High
 // Expected output: <empty line>
 G: 7 High
 
+// TC-24 
+// Tests Requirements R3, R11
+// Display the number of students per grade 
+// Expected output:
+// 1: 2
+// 2: 13
+// 3: 9
+// 4: 15
+// 6: 21
+I
+
+// TC-25
+// Tests Requirements R3, R11
+// Display the number of students per grade, long form
+// Expected output:
+// 1: 2
+// 2: 13
+// 3: 9
+// 4: 15
+// 6: 21
+Info
 
 // TC-Final
 // Tests Requirments R3, R13

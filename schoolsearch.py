@@ -96,6 +96,21 @@ def searchByGrade(selection, studentArray):
     else:
         print("Invalid usage: ", selection)
 
+def displayGradeCount(studentArray):
+    # loop though the array, use a dict to keep track of students in each grade 
+
+    grade_count = {}
+
+    for student in studentArray:
+        grade = student[GRADE]
+        if grade in grade_count:
+            grade_count[grade] += 1 
+        else:
+            grade_count[grade] = 1
+
+    for grade in sorted(grade_count.keys()):
+        print(f"{grade}: {grade_count[grade]}")
+
 def main():
     studentArray = []
 
@@ -116,7 +131,8 @@ def main():
             case "T:" | "Teacher:" : searchByTeacher(selection, studentArray)
             case "B:" | "Bus:" : searchByBus(selection, studentArray)
             case "A:" | "Average:" : average(selection,studentArray)
-            case "G:"  | "Grade:" : searchByGrade(selection,studentArray)
+            case "G:" | "Grade:" : searchByGrade(selection,studentArray)
+            case "I" | "Info" : displayGradeCount(studentArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
