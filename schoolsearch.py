@@ -8,7 +8,7 @@ infoString = """ Usage:
     G[rade]: <number> [H[igh]|L[ow]]
     A[verage]: <number>
     I[nfo]
-    Q[uit]"""
+    Q[uit]\n"""
 
 LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA, TLASTNAME, TFIRSTNAME = [i for i in range(0,8)]
 
@@ -107,10 +107,9 @@ def main():
         lines = studentFile.readlines()
         studentArray = [list(map(lambda string : string.replace("\n",""),line.split(","))) for line in lines]
 
-
+    print(infoString)
     while(True):
-        print(infoString)
-        selection = input().split()
+        selection = input("Enter your command~ ").split()
         match selection[0]:
             case "Q" | "Quit":  exit(0)
             case "S:" | "Student:" : searchByStudent(selection, studentArray)
