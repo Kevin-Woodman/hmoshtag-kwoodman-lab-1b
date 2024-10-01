@@ -108,8 +108,8 @@ def main():
         studentArray = [list(map(lambda string : string.replace("\n",""),line.split(","))) for line in lines]
 
 
-    print(infoString)
     while(True):
+        print(infoString)
         selection = input().split()
         match selection[0]:
             case "Q" | "Quit":  exit(0)
