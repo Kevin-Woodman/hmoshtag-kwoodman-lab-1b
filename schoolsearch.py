@@ -12,7 +12,6 @@ infoString = """ Usage:
 
 LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA, TLASTNAME, TFIRSTNAME = [i for i in range(0,8)]
 
-
 def _searchAndPrint(filter, studentArray, comparisonIndex, outputIndices):
     for student in studentArray: 
         if(student[comparisonIndex] == filter): 
@@ -113,14 +112,35 @@ def displayGradeCount(studentArray):
 
 def main():
     studentArray = []
+    teacherDict = {}
 
-    if(not os.path.isfile("./students.txt")): 
-        print("students.txt not found")
-        exit(0)
+    for fileName in ["list","teachers"]:
+        if(not os.path.isfile(f"./{fileName}.txt")): 
+            print(f"{fileName}.txt not found")
+            exit(0)
 
-    with open("./students.txt") as studentFile:
+    with open("./teachers.txt") as teacherFile:
+        lines = teacherFile.readlines()
+        for line in lines:
+            teacher = list(map(lambda string : string.replace("\n",""),line.split(",")))
+
+            if(len(teacher) != 3):
+                print("Malformatted teacher file")
+                exit(0)
+
+            teacherDict[teacher[2]] = teacher[:-1]
+
+    with open("./list.txt") as studentFile:
         lines = studentFile.readlines()
-        studentArray = [list(map(lambda string : string.replace("\n",""),line.split(","))) for line in lines]
+        for line in lines:
+            student = list(map(lambda string : string.replace("\n",""),line.split(",")))
+            if(not student[CLASSROOM] in teacherDict):
+                student += ["N/A","N/A"]
+            else:
+                student += teacherDict[student[CLASSROOM]]
+
+            studentArray.append(student)
+            print(student)
 
     print(infoString)
     while(True):
