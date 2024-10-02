@@ -8,6 +8,7 @@ infoString = """ Usage:
     G[rade]: <number> [H[igh]|L[ow]]
     A[verage]: <number>
     I[nfo]
+    E[nrollment]
     Q[uit]\n"""
 
 LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA, TLASTNAME, TFIRSTNAME = [i for i in range(0,8)]
@@ -110,6 +111,19 @@ def displayGradeCount(studentArray):
     for grade in sorted(grade_count.keys()):
         print(f"{grade}: {grade_count[grade]}")
 
+def displayClassroomCount(studentArray):
+    class_count = {}
+
+    for student in studentArray:
+        classRoom = student[CLASSROOM]
+        if classRoom in class_count:
+            class_count[classRoom] += 1 
+        else:
+            class_count[classRoom] = 1
+
+    for classRoom, count in sorted(class_count.items()):
+        print(f"{classRoom}: {count}")
+
 def main():
     studentArray = []
     teacherDict = {}
@@ -153,6 +167,7 @@ def main():
             case "A:" | "Average:" : average(selection,studentArray)
             case "G:" | "Grade:" : searchByGrade(selection,studentArray)
             case "I" | "Info" : displayGradeCount(studentArray)
+            case "E" | "Enrollment" : displayClassroomCount(studentArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
