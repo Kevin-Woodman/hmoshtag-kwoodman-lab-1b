@@ -11,39 +11,51 @@ infoString = """ Usage:
     E[nrollment]
     Q[uit]\n"""
 
-LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA, TLASTNAME, TFIRSTNAME = [i for i in range(0,8)]
+LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA = [i for i in range(0,6)]
+TLASTNAME, TFIRSTNAME, TCLASSROOM = [i for i in range(0,3)]
 
-def _searchAndPrint(filter, studentArray, comparisonIndex, outputIndices):
+def _searchAndPrint(filter, studentArray, teacherArray, comparisonIndex, outputIndices, teacher : bool = False):
     for student in studentArray: 
         if(student[comparisonIndex] == filter): 
             for index in outputIndices:
                 print(student[index], end=" ")
+            if(teacher): _printTeachersByClass(teacherArray, student[CLASSROOM])
             print()    
 
-def searchByTeacher(selection, studentArray):
+
+def _printTeachersByClass(teacherArray, classroom):
+    print(" [", end = "")
+    for teacher in teacherArray: 
+        
+        if(teacher[TCLASSROOM] == classroom): 
+                print(teacher[TLASTNAME], teacher[TFIRSTNAME], end=", ")
+    print("\b\b]", end = "")
+
+def searchByTeacher(selection, studentArray, teacherArray):
     if(len(selection) != 2): 
         print("Invalid usage: ", selection)
         return
 
-    _searchAndPrint(selection[1],studentArray, TLASTNAME, [LASTNAME,FIRSTNAME])
+    for teacher in teacherArray:
+        if(teacher[TLASTNAME] == selection[1]):
+             _searchAndPrint(teacher[TCLASSROOM], studentArray, teacherArray, CLASSROOM, [LASTNAME,FIRSTNAME])
 
-def searchByBus(selection, studentArray):
+def searchByBus(selection, studentArray, teacherArray):
     if(len(selection) != 2): 
         print("Invalid usage: ", selection)
         return
 
-    _searchAndPrint(selection[1],studentArray, BUS, [LASTNAME,FIRSTNAME])
+    _searchAndPrint(selection[1],studentArray, teacherArray, BUS, [LASTNAME,FIRSTNAME], False)
 
-def searchByStudent(selection, studentArray):
+def searchByStudent(selection, studentArray, teacherArray):
     if(len(selection) == 2):
-        _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME,FIRSTNAME, GRADE,
-                                                                CLASSROOM, TLASTNAME, TFIRSTNAME])
+        _searchAndPrint(selection[1], studentArray, teacherArray, LASTNAME, [LASTNAME,FIRSTNAME, GRADE, CLASSROOM], True)
     elif (len(selection) == 3 and (selection[2] == "B" or selection[2] == "Bus")):
-        _searchAndPrint(selection[1], studentArray, LASTNAME, [LASTNAME, FIRSTNAME, BUS])
+        _searchAndPrint(selection[1], studentArray,  teacherArray, LASTNAME, [LASTNAME, FIRSTNAME, BUS], False)
     else: 
         print("Invalid usage: ", selection)
 
-def average(selection, studentArray):
+def average(selection, studentArray, teacherArray):
     if(len(selection) != 2): 
         print("Invalid usage: ", selection)
         return
@@ -61,9 +73,9 @@ def average(selection, studentArray):
     if count == 0: return
     print(f"{selection[1]} %.2f"%(total/count))
 
-def searchByGrade(selection, studentArray):
+def searchByGrade(selection, studentArray, teacherArray):
     if len(selection) == 2:  # Normal search by grade
-        _searchAndPrint(selection[1], studentArray, GRADE, [LASTNAME, FIRSTNAME])
+        _searchAndPrint(selection[1], studentArray, teacherArray, GRADE, [LASTNAME, FIRSTNAME], False)
     
     elif len(selection) == 3:  # Search for highest or lowest GPA in a given grade
         grade = selection[1]
@@ -80,7 +92,9 @@ def searchByGrade(selection, studentArray):
 
             # Print all students with the highest GPA (addresses ties)
             for student in highest_gpa_students:
-                print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]} {student[TLASTNAME]} {student[TFIRSTNAME]} {student[BUS]}")
+                print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]}", end = "")
+                _printTeachersByClass(teacherArray,student[CLASSROOM])
+                print(f" {student[BUS]}")
         
         elif selection[2] == 'L' or selection[2] == "Low": 
             min_gpa = min(float(student[GPA]) for student in grade_students)
@@ -90,13 +104,15 @@ def searchByGrade(selection, studentArray):
             
             # Print all students with the lowest GPA (addresses ties)
             for student in lowest_gpa_students:
-                print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]} {student[TLASTNAME]} {student[TFIRSTNAME]} {student[BUS]}")
+                print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]}", end = "")
+                _printTeachersByClass(teacherArray,student[CLASSROOM])
+                print(f" {student[BUS]}")
         else:
             print("Invalid usage: must specify 'H'/'High' for highest or 'L'/'Low' for lowest.")
     else:
         print("Invalid usage: ", selection)
 
-def displayGradeCount(studentArray):
+def displayGradeCount(studentArray, teacherArray):
     # loop though the array, use a dict to keep track of students in each grade 
 
     grade_count = {}
@@ -111,7 +127,7 @@ def displayGradeCount(studentArray):
     for grade in sorted(grade_count.keys()):
         print(f"{grade}: {grade_count[grade]}")
 
-def displayClassroomCount(studentArray):
+def displayClassroomCount(studentArray, teacherArray):
     class_count = {}
 
     for student in studentArray:
@@ -126,7 +142,7 @@ def displayClassroomCount(studentArray):
 
 def main():
     studentArray = []
-    teacherDict = {}
+    teacherArray = []
 
     for fileName in ["list","teachers"]:
         if(not os.path.isfile(f"./{fileName}.txt")): 
@@ -142,32 +158,31 @@ def main():
                 print("Malformatted teacher file")
                 exit(0)
 
-            teacherDict[teacher[2]] = teacher[:-1]
+            teacherArray.append(teacher)
 
     with open("./list.txt") as studentFile:
         lines = studentFile.readlines()
         for line in lines:
             student = list(map(lambda string : string.replace("\n",""),line.split(",")))
-            if(not student[CLASSROOM] in teacherDict):
-                student += ["N/A","N/A"]
-            else:
-                student += teacherDict[student[CLASSROOM]]
+
+            if(len(student) != 6):
+                print("Malformatted student file")
+                exit(0)
 
             studentArray.append(student)
-            print(student)
 
     print(infoString)
     while(True):
         selection = input("Enter your command~ ").split()
         match selection[0]:
             case "Q" | "Quit":  exit(0)
-            case "S:" | "Student:" : searchByStudent(selection, studentArray)
-            case "T:" | "Teacher:" : searchByTeacher(selection, studentArray)
-            case "B:" | "Bus:" : searchByBus(selection, studentArray)
-            case "A:" | "Average:" : average(selection,studentArray)
-            case "G:" | "Grade:" : searchByGrade(selection,studentArray)
-            case "I" | "Info" : displayGradeCount(studentArray)
-            case "E" | "Enrollment" : displayClassroomCount(studentArray)
+            case "S:" | "Student:" : searchByStudent(selection, studentArray, teacherArray)
+            case "T:" | "Teacher:" : searchByTeacher(selection, studentArray, teacherArray)
+            case "B:" | "Bus:" : searchByBus(selection, studentArray, teacherArray)
+            case "A:" | "Average:" : average(selection,studentArray, teacherArray)
+            case "G:" | "Grade:" : searchByGrade(selection,studentArray, teacherArray)
+            case "I" | "Info" : displayGradeCount(studentArray, teacherArray)
+            case "E" | "Enrollment" : displayClassroomCount(studentArray, teacherArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
