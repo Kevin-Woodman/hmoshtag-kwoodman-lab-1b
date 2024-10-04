@@ -270,6 +270,18 @@ E
 Enrollment
 
 
+// TC-Error1
+// Tests Requirements E1
+// Improper usage of valid command
+// Expected output: Invalid usage:  ['A:', '1', 'Low']
+A: 1 Low
+
+// TC-Error2
+// Tests Requirements E1
+// invalid command
+// Expected output: ['P:', '1'] Invalid input
+P: 1
+
 // TC-Final
 // Tests Requirments R3, R13
 // quit command
