@@ -5,7 +5,7 @@ infoString = """ Usage:
     S[tudent]: <lastname> [B[us]] 
     T[eacher]: <lastname> 
     B[us]: <number> 
-    G[rade]: <number> [H[igh]|L[ow]]
+    G[rade]: <number> [H[igh] | L[ow] | T[eachers]]
     A[verage]: <number>
     I[nfo]
     E[nrollment]
@@ -108,6 +108,8 @@ def searchByGrade(selection, studentArray, teacherArray):
                 print(f"{student[LASTNAME]} {student[FIRSTNAME]} {student[GPA]}", end = "")
                 _printTeachersByClass(teacherArray,student[CLASSROOM])
                 print(f" {student[BUS]}")
+        elif selection[2] == 'T' or selection[2] == "Teachers":
+            teachersByGrade(selection,studentArray, teacherArray)
         else:
             print("Invalid usage: must specify 'H'/'High' for highest or 'L'/'Low' for lowest.")
     else:
@@ -141,6 +143,14 @@ def displayClassroomCount(studentArray, teacherArray):
     for classRoom, count in sorted(class_count.items()):
         print(f"{classRoom}: {count}")
 
+def teachersByGrade(selection, studentArray, teacherArray):
+    gradeClassrooms = []
+    for student in studentArray:
+        if(student[GRADE] == selection[1] and student[CLASSROOM] not in gradeClassrooms):
+            gradeClassrooms.append(student[CLASSROOM])
+            _printTeachersByClass(teacherArray, student[CLASSROOM])
+            print()
+    
 def searchByClassNumber(selection, studentArray, teacherArray):
     if len(selection) < 2:
         print("Invalid usage: must specify a classroom number and 'S' (students) or 'T' (teachers).")

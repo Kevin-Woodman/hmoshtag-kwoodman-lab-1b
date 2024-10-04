@@ -212,6 +212,76 @@ I
 // 6: 21
 Info
 
+// TC-26
+// Tests Requirements NR3
+// Display the teachers in a grade that exists, short form
+// Expected output:
+// [FAFARD ROCIO] 
+// [ALPERT JONATHAN] 
+G: 3 T 
+
+// TC-27
+// Tests Requirements NR3
+// Display the teachers in a grade that does not exists, short form
+// Expected output: <empty line>
+G: 9 T
+
+// TC-28
+// Tests Requirements NR3
+// Display the teachers in a grade that exists, long form
+// Expected output:
+// [FALKER ADOLPH]
+Grade: 1 Teachers
+
+// TC-29
+// Tests Requirements NR4
+// Report the enrollments broken down by classroom, short form
+// Expected output:
+//101: 1
+//102: 5
+//103: 2
+//104: 2
+//105: 6
+//106: 2
+//107: 7
+//108: 11
+//109: 5
+//110: 2
+//111: 9
+//112: 8
+E
+
+// TC-30
+// Tests Requirements NR4
+// Report the enrollments broken down by classroom, long form
+// Expected output:
+//101: 1
+//102: 5
+//103: 2
+//104: 2
+//105: 6
+//106: 2
+//107: 7
+//108: 11
+//109: 5
+//110: 2
+//111: 9
+//112: 8
+Enrollment
+
+
+// TC-Error1
+// Tests Requirements E1
+// Improper usage of valid command
+// Expected output: Invalid usage:  ['A:', '1', 'Low']
+A: 1 Low
+
+// TC-Error2
+// Tests Requirements E1
+// invalid command
+// Expected output: ['P:', '1'] Invalid input
+P: 1
+
 // TC-Final
 // Tests Requirments R3, R13
 // quit command
