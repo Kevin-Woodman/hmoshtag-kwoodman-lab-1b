@@ -1,5 +1,7 @@
 # CSC365_Lab1
 
+Note: Co-teachers are shown as a list i.e ```[LastName1 FirstName1, LastName2 FirstName2]```
+
 ## Requirements: 
 * python >= 3.10
 * Check if python3 points to python >= 3.10 using: ```python3 -V```. 
