@@ -9,6 +9,7 @@ infoString = """ Usage:
     A[verage]: <number>
     I[nfo]
     E[nrollment]
+    C[lassroom]: <number> [T[eachers]] [S[tudents]]
     Q[uit]\n"""
 
 LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA = [i for i in range(0,6)]
@@ -140,6 +141,26 @@ def displayClassroomCount(studentArray, teacherArray):
     for classRoom, count in sorted(class_count.items()):
         print(f"{classRoom}: {count}")
 
+def searchByClassNumber(selection, studentArray, teacherArray):
+    if len(selection) < 2:
+        print("Invalid usage: must specify a classroom number and 'S' (students) or 'T' (teachers).")
+        return
+
+    classroom = selection[1]
+
+    if len(selection) == 3 and (selection[2] == "S" or selection[2] == "Students"):  # list students assigned to the classroom
+        students_in_class = [student for student in studentArray if student[CLASSROOM] == classroom]
+
+        for student in students_in_class:
+            print(f"{student[LASTNAME]} {student[FIRSTNAME]} ")
+    elif len(selection) == 3 and (selection[2] == "T" or selection[2] == "Teachers"):  # list teachers assigned to the classroom
+        teachers_in_class = [teacher for teacher in teacherArray if teacher[TCLASSROOM] == classroom]
+
+        for teacher in teachers_in_class:
+            print(f"{teacher[TLASTNAME]} {teacher[TFIRSTNAME]}")
+    else:
+        print("Invalid usage: must specify 'S'/'Students' or 'T'/'Teachers'.")
+
 def main():
     studentArray = []
     teacherArray = []
@@ -183,6 +204,7 @@ def main():
             case "G:" | "Grade:" : searchByGrade(selection,studentArray, teacherArray)
             case "I" | "Info" : displayGradeCount(studentArray, teacherArray)
             case "E" | "Enrollment" : displayClassroomCount(studentArray, teacherArray)
+            case "C:" | "Classroom:" : searchByClassNumber(selection, studentArray, teacherArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
