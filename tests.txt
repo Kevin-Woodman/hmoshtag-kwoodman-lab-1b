@@ -305,6 +305,48 @@ Classroom: 101 Teachers
 // Expected output: <empty line>
 C: 100 T
 
+// TC-37 
+// Tests requirements NR5 
+// Get average and median GPA by grade
+// Expected output: 
+// 1: Average GPA = 3.00, Median GPA = 3.00
+// 2: Average GPA = 2.95, Median GPA = 2.92
+// 3: Average GPA = 3.05, Median GPA = 3.11
+// 4: Average GPA = 2.95, Median GPA = 2.97
+// 6: Average GPA = 2.98, Median GPA = 2.93
+GPA: Grade
+
+// TC-38
+// Tests requirements NR5 
+// Get average and median GPA by teacher
+// Expected output: 
+// FAFARD ROCIO: Average GPA = 3.01, Median GPA = 3.07
+// GAMBREL JAE: Average GPA = 2.96, Median GPA = 2.88
+// KERBS BENITO: Average GPA = 2.98, Median GPA = 2.93
+// STEIB GALE: Average GPA = 2.90, Median GPA = 2.90
+// NISTENDIRK NANCY: Average GPA = 2.96, Median GPA = 2.89
+// ALPERT JONATHAN: Average GPA = 3.17, Median GPA = 3.17
+// HANTZ JED: Average GPA = 2.91, Median GPA = 2.83
+// HAMER GAVIN: Average GPA = 2.95, Median GPA = 2.93
+// BODZIONY LUZ: Average GPA = 3.09, Median GPA = 3.09
+// CHIONCHIO PERLA: Average GPA = 2.99, Median GPA = 2.99
+// FALKER ADOLPH: Average GPA = 3.00, Median GPA = 3.00
+// COOL REUBEN: Average GPA = 2.91, Median GPA = 2.91
+GPA: Teacher
+
+// TC-39
+// Tests requirements NR5 
+// Get average and median GPA by bus
+// Expected output: 
+// 0: Average GPA = 2.95, Median GPA = 2.88
+// 51: Average GPA = 3.02, Median GPA = 3.02
+// 52: Average GPA = 2.88, Median GPA = 2.87
+// 53: Average GPA = 3.06, Median GPA = 3.10
+// 54: Average GPA = 2.94, Median GPA = 2.92
+// 55: Average GPA = 3.04, Median GPA = 3.10
+// 56: Average GPA = 2.92, Median GPA = 2.88
+GPA: Bus
+
 // TC-Error1
 // Tests Requirements E1
 // Improper usage of valid command
