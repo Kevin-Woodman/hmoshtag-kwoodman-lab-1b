@@ -269,6 +269,23 @@ E
 //112: 8
 Enrollment
 
+// TC-31 
+// Tests requirements NR1 
+// Get the students for classroom 101, short form
+// Expected output: DURAND CARLEE  
+C: 101 S 
+
+// TC-32 
+// Tests requirements NR1
+// Get the students for classroom 101, long form 
+// Expected output: DURAND CARLEE  
+Classroom: 101 Student 
+
+// TC-33 
+// Tests requirements NR1 
+// Get students from an non existant classroom
+// Expected output: <empty line> 
+C: 100 S
 
 // TC-Error1
 // Tests Requirements E1
