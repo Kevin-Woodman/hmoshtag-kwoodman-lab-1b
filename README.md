@@ -20,7 +20,6 @@ NR2:  C[lassroom]: <number>  T[eachers]
 * C: 101 T
 * Classroom: 102 Teachers
 
-
 NR3: G[rade]: <Number> [T]eachers
 * G: 3 T 
 * Grade: 1 Teachers
@@ -30,3 +29,6 @@ NR4: E[nrollment]
 * Enrollment
 
 NR5:
+* GPA: Grade 
+* GPA: Teacher 
+* GPA: Bus
