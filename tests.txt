@@ -279,7 +279,7 @@ C: 101 S
 // Tests requirements NR1
 // Get the students for classroom 101, long form 
 // Expected output: DURAND CARLEE  
-Classroom: 101 Student 
+Classroom: 101 Students
 
 // TC-33 
 // Tests requirements NR1 
