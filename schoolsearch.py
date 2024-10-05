@@ -10,6 +10,9 @@ infoString = """ Usage:
     I[nfo]
     E[nrollment]
     C[lassroom]: <number> [T[eachers]] [S[tudents]]
+    GPA: Grade 
+    GPA: Teacher 
+    GPA: Bus
     Q[uit]\n"""
 
 LASTNAME, FIRSTNAME, GRADE, CLASSROOM, BUS, GPA = [i for i in range(0,6)]
@@ -171,6 +174,61 @@ def searchByClassNumber(selection, studentArray, teacherArray):
     else:
         print("Invalid usage: must specify 'S'/'Students' or 'T'/'Teachers'.")
 
+def gpaByGrade(studentArray):
+    grade_gpa = {}
+    
+    for student in studentArray:
+        grade = student[GRADE]
+        gpa = float(student[GPA])
+        
+        if grade not in grade_gpa: # organize the gpas by grade level
+            grade_gpa[grade] = []
+        grade_gpa[grade].append(gpa)
+    
+    print("GPA by Grade Level:")
+    for grade in sorted(grade_gpa.keys()):
+        gpas = grade_gpa[grade]
+        avg_gpa = sum(gpas) / len(gpas)
+        median_gpa = np.median(gpas)
+        print(f"{grade}: Average GPA = {avg_gpa:.2f}, Median GPA = {median_gpa:.2f}")
+
+def gpaByTeacher(studentArray, teacherArray):
+    teacher_gpa = {}
+    
+    for student in studentArray:
+        classroom = student[CLASSROOM]
+        gpa = float(student[GPA])
+        
+        for teacher in teacherArray: # organize gpas by teacher
+            if teacher[TCLASSROOM] == classroom:
+                teacher_name = f"{teacher[TLASTNAME]} {teacher[TFIRSTNAME]}"
+                if teacher_name not in teacher_gpa:
+                    teacher_gpa[teacher_name] = []
+                teacher_gpa[teacher_name].append(gpa)
+    
+    print("GPA by Teacher:")
+    for teacher, gpas in teacher_gpa.items():
+        avg_gpa = sum(gpas) / len(gpas)
+        median_gpa = np.median(gpas)
+        print(f"{teacher}: Average GPA = {avg_gpa:.2f}, Median GPA = {median_gpa:.2f}")
+
+def gpaByBus(studentArray):
+    bus_gpa = {}
+    
+    for student in studentArray:
+        bus = student[BUS]
+        gpa = float(student[GPA])
+        
+        if bus not in bus_gpa: # organize gpas by bus
+            bus_gpa[bus] = []
+        bus_gpa[bus].append(gpa)
+    
+    for bus in sorted(bus_gpa.keys()):
+        gpas = bus_gpa[bus]
+        avg_gpa = sum(gpas) / len(gpas)
+        median_gpa = np.median(gpas)
+        print(f"{bus}: Average GPA = {avg_gpa:.2f}, Median GPA = {median_gpa:.2f}")
+
 def main():
     studentArray = []
     teacherArray = []
@@ -215,6 +273,9 @@ def main():
             case "I" | "Info" : displayGradeCount(studentArray, teacherArray)
             case "E" | "Enrollment" : displayClassroomCount(studentArray, teacherArray)
             case "C:" | "Classroom:" : searchByClassNumber(selection, studentArray, teacherArray)
+            case "GPA:" if selection[1] == "Grade" : gpaByGrade(studentArray)
+            case "GPA:" if selection[1] == "Teacher" : gpaByTeacher(studentArray, teacherArray)
+            case "GPA:" if selection[1] == "Bus" : gpaByBus(studentArray)
             case _: print(selection, "Invalid input")
         print("")
 if __name__ == "__main__":
