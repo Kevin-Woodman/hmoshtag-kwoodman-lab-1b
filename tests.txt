@@ -287,6 +287,24 @@ Classroom: 101 Students
 // Expected output: <empty line> 
 C: 100 S
 
+// TC-34 
+// Tests requirements NR2 
+// Get teacher from classroom 101, short form
+// Expected output: COOL REUBEN 
+C: 101 T
+
+// TC-35
+// Tests requirements NR2 
+// Get teacher from classroom 101, long form
+// Expected output: COOL REUBEN 
+Classroom: 101 Teachers
+
+// TC-36
+// Tests requirements NR2 
+// Get teacher from non existant classroom
+// Expected output: <empty line>
+C: 100 T
+
 // TC-Error1
 // Tests Requirements E1
 // Improper usage of valid command
