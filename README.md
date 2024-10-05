@@ -28,7 +28,7 @@ NR4: E[nrollment]
 * E
 * Enrollment
 
-NR5:
+NR5: GPA: [Grade | Teacher | Bus]
 * GPA: Grade 
 * GPA: Teacher 
 * GPA: Bus
