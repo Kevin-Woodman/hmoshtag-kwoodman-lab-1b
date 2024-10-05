@@ -185,7 +185,6 @@ def gpaByGrade(studentArray):
             grade_gpa[grade] = []
         grade_gpa[grade].append(gpa)
     
-    print("GPA by Grade Level:")
     for grade in sorted(grade_gpa.keys()):
         gpas = grade_gpa[grade]
         avg_gpa = sum(gpas) / len(gpas)
@@ -206,7 +205,6 @@ def gpaByTeacher(studentArray, teacherArray):
                     teacher_gpa[teacher_name] = []
                 teacher_gpa[teacher_name].append(gpa)
     
-    print("GPA by Teacher:")
     for teacher, gpas in teacher_gpa.items():
         avg_gpa = sum(gpas) / len(gpas)
         median_gpa = np.median(gpas)
